@@ -9,13 +9,15 @@ def dollars_and_cents(x):
 def decrement(btn):
     app.setEntry("Tip", app.getEntry("Tip") - 1)
     app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)
-    app.setLabel("Bill Total", app.getEntry("Bill") + app.getLabel("Tip Total"))
+    app.setLabel("Bill Total", dollars_and_cents(app.getEntry("Bill") + app.getLabel("Tip Total")))
+    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))
 
 
 def increment(btn):
     app.setEntry("Tip", app.getEntry("Tip") + 1)
     app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)
-    app.setLabel("Bill Total", app.getEntry("Bill") + app.getLabel("Tip Total"))
+    app.setLabel("Bill Total", dollars_and_cents(app.getEntry("Bill") + app.getLabel("Tip Total")))
+    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))
 
 
 app = gui("Tip Calculator", "800x400")
