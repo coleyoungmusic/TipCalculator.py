@@ -1,3 +1,13 @@
+# Python 3.6.3
+
+"""
+NOTE:
+The line of code "app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)"
+is executed once to insure the proper calculation is made and then twice to format that
+calculation using the dollars_and_cents function.
+"""
+
+
 from appJar import gui
 
 
@@ -8,16 +18,16 @@ def dollars_and_cents(x):
 
 def decrement(btn):
     app.setEntry("Tip", app.getEntry("Tip") - 1)
-    app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)
+    app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)  # calculation
     app.setLabel("Bill Total", dollars_and_cents(app.getEntry("Bill") + app.getLabel("Tip Total")))
-    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))
+    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))  # formatting
 
 
 def increment(btn):
     app.setEntry("Tip", app.getEntry("Tip") + 1)
-    app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)
+    app.setLabel("Tip Total", app.getEntry("Tip") * app.getEntry("Bill") / 100)  # calculation
     app.setLabel("Bill Total", dollars_and_cents(app.getEntry("Bill") + app.getLabel("Tip Total")))
-    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))
+    app.setLabel("Tip Total", dollars_and_cents(app.getEntry("Tip") * app.getEntry("Bill") / 100))  # formatting
 
 
 app = gui("Tip Calculator", "800x400")
